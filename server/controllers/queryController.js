@@ -7,7 +7,7 @@ queryController.getAllSchemaList = (req, res, next) => {
   // schema_name, field_name, field_type
   const { schema_name, field_name, field_type } = req.body;
   // const item = `SELECT * FROM schema_list, fields WHERE schema_list`
-  const text = `SELECT * FROM "public"."schema_list" LIMIT 100`;
+  const text = `SELECT * FROM "public"."schema_list"`;
   db.query(text)
     .then((data) => {
       // console.log('getAllSchemaList is: ', data);
@@ -23,7 +23,7 @@ queryController.getAllFields = (req, res, next) => {
   // schema_name, field_name, field_type
   const { id, field_name, field_type } = req.body;
   // const item = `SELECT * FROM schema_list, fields WHERE schema_list`
-  const text = `SELECT * FROM "public"."fields" LIMIT 100`;
+  const text = `SELECT * FROM "public"."fields"`;
   db.query(text)
     .then((data) => {
       // console.log('getAllFields is: ', data);
