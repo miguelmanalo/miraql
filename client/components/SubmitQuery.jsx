@@ -61,12 +61,18 @@ function SubmitQuery({ urlValue }) {
     })
       .then((res) => res.json())
       .then((res) => {
+        // stop timer and push query resolve time to state
         const responseTime = (Date.now() - startTime) / 1000;
         setQueryResponseTime((queryResponseTime) => [
           ...queryResponseTime,
           responseTime,
         ]);
+        // store fetch response in state
         setFetchResponse(res);
+        // check if fetch response has errors update state
+        if (res.errors) {
+          setErrors(true);
+        }
       })
       .catch((error) => console.log(error));
   };
@@ -128,7 +134,7 @@ function SubmitQuery({ urlValue }) {
               {/* new tables card component? */}
             </TabPanel>
             <TabPanel>
-              <Schema />
+              <Schema query={query}/>
             </TabPanel>
             <TabPanel>
               <Metrics
