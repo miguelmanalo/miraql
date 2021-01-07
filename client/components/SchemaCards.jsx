@@ -17,6 +17,7 @@ const SchemaCards = (boolSwap) => {
   useEffect(() => {
     fetch("/schema")
       .then((res) => {
+        // console.log('res schema', res);
         return res.json();
       })
       .then((res) => setResponse(res))
@@ -25,11 +26,12 @@ const SchemaCards = (boolSwap) => {
       });
   }, [boolSwap]);
 
-  // console.log("this is the schemaResponse", schemaResponse);
+  console.log("this is the schemaResponse", schemaResponse);
 
   useEffect(() => {
     fetch("/field")
       .then((res) => {
+        // console.log('res field', res);
         return res.json();
       })
       .then((res) => setFields(res))
@@ -37,6 +39,32 @@ const SchemaCards = (boolSwap) => {
         console.log(err);
       });
   }, [boolSwap]);
+
+  console.log("this is the fieldResponse", fieldResponse);
+
+  // console.log('schemaResponse[0].schema_name ', schemaResponse[0].schema_name);
+
+  /* We want to dynamically render/populate a new <tr> and <td>s every
+  time a new table is created/we call fetch */
+  // create a const to store the responses from fetches
+  // const responses = [schemaResponse, fieldResponse];
+  // newCard array will store elements we want to render below
+  // console.log('responses', responses);
+  // const newCard = [];
+  
+  // for (const [index, value] of responses.entries()) {
+  //   newCard.push(
+  //     // <br></br>
+  //     <table key={index}>{value}</table>
+  //   )
+  // }
+
+  // <br></br>
+  //     <table> 
+  //       <div>
+  //         {newCard}
+  //       </div>
+  //     </table>
 
   return (
     <>
